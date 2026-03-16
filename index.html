@@ -7,244 +7,651 @@
   <meta name="description" content="NAZARIYAA — Where every line has meaning. Luxury Indian streetwear rooted in art and perspective. Our designs speak — your perspective completes them. Coming soon.">
   <meta name="keywords" content="NAZARIYAA, luxury streetwear, Indian fashion, art fashion, perspective, designer streetwear">
   <meta name="theme-color" content="#050303">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'cormorant': ['Cormorant Garamond', 'serif'],
-            'dm-mono': ['DM Mono', 'monospace'],
-            'devanagari': ['Noto Sans Devanagari', 'sans-serif']
-          },
-          colors: {
-            void: '#030201',
-            ink: '#0A0605',
-            'ink-2': '#110A08',
-            crimson: '#8C1010',
-            'crim-mid': 'rgba(140,16,16,0.45)',
-            'crim-lo': 'rgba(140,16,16,0.18)',
-            'crim-glow': 'rgba(140,16,16,0.06)',
-            bone: '#E8E0D5',
-            'bone-2': '#C9BFB2',
-            muted: 'rgba(232,224,213,0.35)',
-            faint: 'rgba(232,224,213,0.08)',
-            glass: 'rgba(10,6,5,0.55)'
-          },
-          animation: {
-            'logo-reveal': 'logoReveal 2s cubic-bezier(.16,1,.3,1)',
-            'line-grow': 'lineGrow 1.2s ease',
-            'stroke-reveal': 'strokeReveal 1s ease',
-            'orb-pulse': 'orbPulse 10s ease-in-out infinite',
-            'orb-float': 'orbFloat 14s ease-in-out infinite',
-            'glyph-float': 'glyphFloat 25s linear infinite',
-            'marquee': 'marquee 40s linear infinite',
-            'sep-pulse': 'sepPulse 2s ease-in-out infinite',
-            'preloader-pulse': 'preloaderPulse 1.2s ease-in-out infinite',
-            'preloader-line': 'preloaderLine 1.6s cubic-bezier(.25,.8,.25,1) infinite',
-            'fade-down': 'fadeDown .8s ease',
-            up: 'up 1s ease',
-            'fade-in': 'fadeIn 1s ease'
-          },
-          keyframes: {
-            logoReveal: {
-              'from': { opacity: '0', transform: 'scale(.88) translateY(24px)', filter: 'blur(8px)' },
-              'to': { opacity: '1', transform: 'scale(1) translateY(0)', filter: 'drop-shadow(0 0 60px rgba(140,16,16,.22)) drop-shadow(0 0 20px rgba(140,16,16,.15))' }
-            },
-            lineGrow: {
-              'from': { width: '0', opacity: '0' },
-              'to': { width: '120px', opacity: '.6' }
-            },
-            strokeReveal: {
-              'to': { transform: 'scaleX(1)' }
-            },
-            orbPulse: {
-              '0%, 100%': { opacity: '.5', transform: 'translate(-50%, -50%) scale(1)' },
-              '50%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1.2)' }
-            },
-            orbFloat: {
-              '0%, 100%': { transform: 'translate(0, 0)', opacity: '.4' },
-              '50%': { transform: 'translate(-30px, 20px)', opacity: '.8' }
-            },
-            glyphFloat: {
-              '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '0' },
-              '10%': { opacity: '1' },
-              '90%': { opacity: '1' },
-              '100%': { transform: 'translateY(-100vh) rotate(15deg)', opacity: '0' }
-            },
-            marquee: {
-              'from': { transform: 'translateX(0)' },
-              'to': { transform: 'translateX(-50%)' }
-            },
-            sepPulse: {
-              '0%, 100%': { opacity: '1' },
-              '50%': { opacity: '.3' }
-            },
-            preloaderPulse: {
-              '0%, 100%': { opacity: '.4' },
-              '50%': { opacity: '1' }
-            },
-            preloaderLine: {
-              '0%': { transform: 'scaleX(0)', opacity: '0' },
-              '50%': { transform: 'scaleX(1)', opacity: '1' },
-              '100%': { transform: 'scaleX(0)', opacity: '0', transformOrigin: 'right' }
-            },
-            fadeDown: {
-              'from': { opacity: '0', transform: 'translateY(-10px)' },
-              'to': { opacity: '1', transform: 'none' }
-            },
-            up: {
-              'from': { opacity: '0', transform: 'translateY(20px)' },
-              'to': { opacity: '1', transform: 'none' }
-            },
-            fadeIn: {
-              'from': { opacity: '0' },
-              'to': { opacity: '1' }
-            }
-          }
-        }
-      }
-    }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Noto+Sans+Devanagari:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    /* Custom Tailwind utilities for specific effects */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:       #030201;
+      --ink:        #0A0605;
+      --ink2:       #110A08;
+      --crimson:    #8C1010;
+      --crim-mid:   rgba(140,16,16,0.45);
+      --crim-lo:    rgba(140,16,16,0.18);
+      --crim-glow:  rgba(140,16,16,0.06);
+      --bone:       #E8E0D5;
+      --bone2:      #C9BFB2;
+      --muted:      rgba(232,224,213,0.35);
+      --faint:      rgba(232,224,213,0.08);
+      --glass:      rgba(10,6,5,0.55);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--void);
+      color: var(--bone);
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(140,16,16,0.4);
+      color: var(--bone);
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; mix-blend-mode: difference; }
+    .c-dot {
+      position: absolute; width: 5px; height: 5px;
+      background: var(--bone); border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .c-ring {
+      position: absolute; width: 32px; height: 32px;
+      border: 1px solid rgba(232,224,213,0.4); border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width .3s cubic-bezier(.25,.8,.25,1), height .3s cubic-bezier(.25,.8,.25,1), border-color .3s;
+    }
+    body.hov .c-ring { width: 54px; height: 54px; border-color: var(--bone); }
+
+    /* ATMOSPHERE & TEXTURE LAYERS */
     .grain {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+      opacity: .7; mix-blend-mode: overlay;
     }
-    .scanlines {
-      background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(3,2,1,0.04) 3px, rgba(3,2,1,0.04) 4px);
-    }
+
     .vignette {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background: radial-gradient(ellipse 70% 70% at 50% 50%, transparent 20%, rgba(3,2,1,0.92) 100%);
     }
-    .backdrop-blur-md { backdrop-filter: blur(16px); }
-    .webkit-backdrop-blur-md { -webkit-backdrop-filter: blur(16px); }
-    .mix-blend-difference { mix-blend-mode: difference; }
-    .cursor-none { cursor: none; }
-    body.hov .c-ring { 
-      @apply w-[54px] h-[54px] border-bone;
+
+    .glow-orb {
+      position: fixed; border-radius: 50%;
+      z-index: 0; pointer-events: none;
+      filter: blur(80px);
+    }
+    .glow-orb--center {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(140,16,16,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: orbPulse 10s ease-in-out infinite;
+    }
+    .glow-orb--top {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(140,16,16,0.04) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      animation: orbFloat 14s ease-in-out infinite;
+    }
+    .glow-orb--bottom {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(80,8,8,0.05) 0%, transparent 70%);
+      bottom: -150px; left: -100px;
+      animation: orbFloat 18s ease-in-out infinite reverse;
+    }
+
+    @keyframes orbPulse {
+      0%, 100% { opacity: .5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0); opacity: .4; }
+      50% { transform: translate(-30px, 20px); opacity: .8; }
+    }
+
+    .scanlines {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(3,2,1,0.04) 3px, rgba(3,2,1,0.04) 4px
+      );
+    }
+
+    /* FLOATING DEVANAGARI GLYPHS */
+    .bg-glyphs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .bg-glyph {
+      position: absolute;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-weight: 300;
+      color: rgba(140,16,16,0.04);
+      user-select: none;
+      animation: glyphFloat linear infinite;
+    }
+    @keyframes glyphFloat {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(15deg); opacity: 0; }
+    }
+
+    /* MAIN PAGE LAYOUT */
+    .page {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh;
+      padding: 60px 28px 100px;
+    }
+
+    /* Horizontal nav markers */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 28px 40px;
+      animation: fadeDown .8s ease .2s both;
+    }
+    .top-bar__left, .top-bar__right {
+      font-size: 7px; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* LOGO */
+    .logo-block {
+      animation: logoReveal 2s cubic-bezier(.16,1,.3,1) .6s both;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .logo-block::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+      opacity: 0;
+      animation: lineGrow 1.2s ease 2s both;
+    }
+    .logo-block img {
+      width: clamp(200px, 35vw, 440px);
+      display: block;
+      filter:
+        drop-shadow(0 0 60px rgba(140,16,16,0.22))
+        drop-shadow(0 0 20px rgba(140,16,16,0.15));
+    }
+    @keyframes logoReveal {
+      from { opacity: 0; transform: scale(.88) translateY(24px); filter: blur(8px); }
+      to   { opacity: 1; transform: scale(1) translateY(0);
+             filter: drop-shadow(0 0 60px rgba(140,16,16,.22)) drop-shadow(0 0 20px rgba(140,16,16,.15)); }
+    }
+    @keyframes lineGrow {
+      from { width: 0; opacity: 0; }
+      to   { width: 120px; opacity: .6; }
+    }
+
+    /* DIVIDER — नज़रिया · Perspective */
+    .divider {
+      display: flex; align-items: center; gap: 18px;
+      margin-bottom: 32px;
+      animation: up 1s ease 1.2s both;
+    }
+    .div-line { width: 50px; height: 1px; background: var(--crimson); opacity: .35; }
+    .div-text {
+      font-family: 'Noto Sans Devanagari', 'DM Mono', sans-serif;
+      font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+      color: #A61414;
+      opacity: 1; text-shadow: 0 0 10px rgba(166, 20, 20, 0.4);
+    }
+
+    /* HERO TAGLINE */
+    .tagline {
+      text-align: center; max-width: 680px;
+      margin-bottom: 20px;
+      animation: up 1s ease 1.4s both;
+    }
+    .tagline h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4.2vw, 54px);
+      font-weight: 300; line-height: 1.2;
+      letter-spacing: .025em;
+    }
+    .tagline h1 em {
+      font-style: italic; color: var(--bone2);
+      display: block; margin-top: 4px;
+    }
+    .tagline .accent {
+      position: relative; display: inline-block;
+    }
+    .tagline .accent::after {
+      content: '';
+      position: absolute; bottom: 2px; left: 0; right: 0;
+      height: 1px; background: var(--crimson); opacity: .5;
+      transform: scaleX(0); transform-origin: left;
+      animation: strokeReveal 1s ease 2.4s forwards;
+    }
+    @keyframes strokeReveal {
+      to { transform: scaleX(1); }
+    }
+
+    /* PHILOSOPHY TEXT */
+    .philosophy {
+      font-size: 9.5px; letter-spacing: .14em; line-height: 2.3;
+      color: var(--muted); text-align: center;
+      max-width: 480px;
+      margin-bottom: 48px;
+      animation: up 1s ease 1.6s both;
+    }
+    .philosophy span {
+      color: rgba(140,16,16,0.7);
+      font-weight: 500;
+    }
+
+    /* MANIFESTO STRIP */
+    .manifesto-strip {
+      width: 100vw; overflow: hidden;
+      margin-bottom: 52px;
+      border-top: 1px solid var(--faint);
+      border-bottom: 1px solid var(--faint);
+      padding: 16px 0;
+      animation: up 1s ease 1.7s both;
+    }
+    .manifesto-track {
+      display: flex; gap: 60px;
+      white-space: nowrap;
+      animation: marquee 40s linear infinite;
+    }
+    .manifesto-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 2vw, 22px);
+      font-weight: 300; letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(232,224,213,0.22);
+    }
+    .manifesto-word.red { color: rgba(140,16,16,0.45); }
+    .manifesto-dot {
+      color: rgba(140,16,16,0.3);
+      font-size: 10px;
+      align-self: center;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* COMING SOON LABEL */
+    .coming-soon-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      letter-spacing: .4em; text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 32px;
+      animation: up 1s ease 1.8s both;
+      position: relative;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: flex; gap: clamp(14px, 3.5vw, 36px);
+      margin-bottom: 52px;
+      animation: up 1s ease 1.9s both;
+    }
+    .countdown-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 10px;
+      padding: 16px 8px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: border-color .4s;
+    }
+    .countdown-item:hover {
+      border-color: var(--crim-lo);
+    }
+    .countdown-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6.5vw, 68px);
+      font-weight: 300; line-height: 1;
+      color: var(--bone);
+      min-width: 60px; text-align: center;
+      transition: color .3s;
+    }
+    .countdown-item:hover .countdown-number { color: var(--crimson); }
+    .countdown-label {
+      font-size: 7px; letter-spacing: .4em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .countdown-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 52px);
+      color: rgba(140,16,16,0.25);
+      align-self: flex-start;
+      padding-top: 16px;
+      animation: sepPulse 2s ease-in-out infinite;
+    }
+    @keyframes sepPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    /* THIN DIVIDERS */
+    .line-accent {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+      margin-bottom: 48px;
+      animation: up 1s ease 2.0s both;
+      opacity: .5;
+    }
+
+    /* GOOGLE FORM BUTTON */
+    .google-form-section {
+      text-align: center;
+      margin-bottom: 52px;
+      animation: up 1s ease 2.1s both;
+      padding: 36px 32px;
+      border: 1px solid var(--faint);
+      border-radius: 8px;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      max-width: 480px; width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .google-form-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+      opacity: .4;
+    }
+    .subscribe-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.6vw, 26px);
+      font-weight: 300;
+      color: var(--bone); letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+    .subscribe-sub {
+      font-size: 8px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .google-form-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: var(--crimson);
+      color: var(--bone);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+    }
+    .google-form-btn::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform .6s;
+    }
+    .google-form-btn:hover::after { transform: translateX(100%); }
+    .google-form-btn:hover { 
+      letter-spacing: .36em; 
+      background: #A02020;
+      transform: translateY(-2px);
+    }
+
+    /* OUR STORY BUTTON */
+    .story-btn {
+      appearance: none; background: transparent; border: 1px solid var(--crimson);
+      color: var(--crimson); font-family: 'DM Mono', monospace; font-size: 8px;
+      letter-spacing: .3em; text-transform: uppercase; padding: 12px 24px;
+      cursor: none; margin-bottom: 32px; transition: all .3s;
+      animation: up 1s ease 1.8s both;
+    }
+    .story-btn:hover { background: var(--crimson); color: var(--bone); }
+
+    /* STORY MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(3,2,1,0.85);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      z-index: 1000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    
+    .modal-content {
+      background: var(--ink); border: 1px solid var(--crim-lo);
+      padding: 40px; width: 90%; max-width: 600px;
+      transform: translateY(20px); transition: transform .4s cubic-bezier(.16,1,.3,1);
+      position: relative; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: transparent; border: none; color: var(--muted);
+      font-size: 20px; cursor: none; transition: color .3s;
+    }
+    .modal-close:hover { color: var(--crimson); }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300;
+      color: var(--bone); margin-bottom: 24px; text-align: center;
+    }
+
+    /* SOCIAL */
+    .social-links {
+      animation: up 1s ease 2.3s both;
+      display: flex; gap: 24px; align-items: center;
+      margin-bottom: 20px;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 8px; letter-spacing: .24em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      cursor: none;
+      transition: color .3s, border-color .3s;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 2px;
+    }
+    .social-link:hover {
+      color: var(--crimson);
+      border-color: var(--crim-lo);
+    }
+    .social-link svg {
+      width: 16px; height: 16px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 28px;
+      animation: fadeIn 1s ease 2.5s both;
+      border-top: 1px solid var(--faint);
+    }
+    .copy {
+      font-size: 7.5px; letter-spacing: .14em;
+      color: rgba(232,224,213,0.12);
+    }
+
+    /* ANIMATIONS */
+    @keyframes up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .top-bar { padding: 20px 24px; }
+      .page { padding: 80px 20px 80px; }
+      .logo-block img { width: clamp(180px, 65vw, 300px); }
+      .countdown { gap: 10px; }
+      .countdown-number { min-width: 36px; }
+      .countdown-item { padding: 10px 4px; }
+      .google-form-section { padding: 28px 20px; }
+      .manifesto-strip { margin-bottom: 40px; }
+    }
+
+    @media (max-width: 420px) {
+      .top-bar__left, .top-bar__right { font-size: 6px; letter-spacing: .2em; }
+      .philosophy { font-size: 8.5px; letter-spacing: .1em; }
+    }
+
+    /* PRELOADER */
+    .preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--void);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 20px;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+    .preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 8px; letter-spacing: .5em; text-transform: uppercase;
+      color: var(--crimson);
+      animation: preloaderPulse 1.2s ease-in-out infinite;
+    }
+    .preloader-line {
+      width: 60px; height: 1px;
+      background: var(--crimson);
+      transform-origin: left;
+      animation: preloaderLine 1.6s cubic-bezier(.25,.8,.25,1) infinite;
+    }
+    @keyframes preloaderPulse {
+      0%, 100% { opacity: .4; }
+      50% { opacity: 1; }
+    }
+    @keyframes preloaderLine {
+      0%   { transform: scaleX(0); opacity: 0; }
+      50%  { transform: scaleX(1); opacity: 1; }
+      100% { transform: scaleX(0); opacity: 0; transform-origin: right; }
     }
   </style>
 </head>
-<body class="font-dm-mono bg-void text-bone min-h-screen overflow-x-hidden cursor-none antialiased selection:bg-crim-mid selection:text-bone scroll-smooth">
+<body>
   <!-- Preloader -->
-  <div class="preloader fixed inset-0 z-[9999] bg-void flex flex-col items-center justify-center gap-5 transition-all duration-700 ease-in-out" id="preloader">
-    <div class="preloader-text text-[8px] tracking-[.5em] uppercase text-crimson animate-preloader-pulse">Nazariyaa</div>
-    <div class="preloader-line w-[60px] h-px bg-crimson origin-left animate-preloader-line"></div>
+  <div class="preloader" id="preloader">
+    <div class="preloader-text">Nazariyaa</div>
+    <div class="preloader-line"></div>
   </div>
 
   <!-- Custom Cursor -->
-  <div class="cursor fixed inset-0 pointer-events-none z-[9999] mix-blend-difference" id="cursor">
-    <div class="c-ring absolute w-[32px] h-[32px] border border-[rgba(232,224,213,0.4)] rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-[cubic-bezier(.25,.8,.25,1)]" id="cring"></div>
-    <div class="c-dot absolute w-[5px] h-[5px] bg-bone rounded-full -translate-x-1/2 -translate-y-1/2" id="cdot"></div>
+  <div class="cursor" id="cursor">
+    <div class="c-ring" id="cring"></div>
+    <div class="c-dot" id="cdot"></div>
   </div>
 
   <!-- Atmosphere Layers -->
-  <div class="grain fixed inset-0 z-0 pointer-events-none opacity-70 mix-blend-overlay"></div>
-  <div class="scanlines fixed inset-0 z-0 pointer-events-none"></div>
-  <div class="vignette fixed inset-0 z-0 pointer-events-none"></div>
-  <div class="glow-orb--center glow-orb fixed inset-0 m-auto w-[600px] h-[600px] rounded-full blur-[80px] bg-[radial-gradient(circle,rgba(140,16,16,0.08)_0%,transparent_70%)] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-orb-pulse z-0 pointer-events-none"></div>
-  <div class="glow-orb--top glow-orb fixed w-[400px] h-[400px] rounded-full blur-[80px] bg-[radial-gradient(circle,rgba(140,16,16,0.04)_0%,transparent_70%)] -top-[100px] -right-[100px] animate-orb-float z-0 pointer-events-none"></div>
-  <div class="glow-orb--bottom glow-orb fixed w-[500px] h-[500px] rounded-full blur-[80px] bg-[radial-gradient(circle,rgba(80,8,8,0.05)_0%,transparent_70%)] -bottom-[150px] -left-[100px] animate-[orbFloat_18s_ease-in-out_infinite_reverse] z-0 pointer-events-none"></div>
+  <div class="grain"></div>
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+  <div class="glow-orb glow-orb--center"></div>
+  <div class="glow-orb glow-orb--top"></div>
+  <div class="glow-orb glow-orb--bottom"></div>
 
-  <!-- MUCH MORE VISIBLE & STYLISH FLOATING DEVANAGARI GLYPHS -->
-  <div class="bg-glyphs fixed inset-0 z-0 pointer-events-none overflow-hidden" id="bg-glyphs"></div>
+  <!-- Floating Devanagari Glyphs -->
+  <div class="bg-glyphs" id="bg-glyphs"></div>
 
   <!-- Top Bar -->
-  <div class="top-bar fixed top-0 left-0 right-0 z-10 flex justify-between items-center p-[28px_40px] animate-fade-down">
-    <span class="top-bar__left text-[7px] tracking-[.32em] uppercase text-muted">Est. 2025</span>
-    <span class="top-bar__right text-[7px] tracking-[.32em] uppercase text-muted">Bhilai, Chhattisgarh</span>
+  <div class="top-bar">
+    <span class="top-bar__left">Est. 2025</span>
+    <span class="top-bar__right">Bhilai, Chhattisgarh</span>
   </div>
 
   <!-- Main Page -->
-  <main class="page relative z-[1] flex flex-col items-center justify-center min-h-screen p-[60px_28px_100px]">
+  <main class="page">
     <!-- Logo -->
-    <div class="logo-block animate-logo-reveal mb-[36px] relative after:content-[''] after:absolute after:-bottom-[8px] after:left-1/2 after:-translate-x-1/2 after:w-[120px] after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-crimson after:to-transparent after:opacity-0 after:animate-line-grow">
-      <img src="Logo Of nazariya.png" alt="NAZARIYAA — Luxury Indian Streetwear" class="w-[clamp(200px,35vw,440px)] block mx-auto drop-shadow-[0_0_60px_rgba(140,16,16,0.22)] drop-shadow-[0_0_20px_rgba(140,16,16,0.15)]">
+    <div class="logo-block">
+      <img src="Logo Of nazariya.png" alt="NAZARIYAA — Luxury Indian Streetwear">
     </div>
 
     <!-- Divider -->
-    <div class="divider flex items-center gap-[18px] mb-8 animate-up">
-      <div class="div-line w-[50px] h-px bg-crimson opacity-35"></div>
-      <span class="div-text font-devanagari text-[10px] tracking-[.3em] uppercase text-[#A61414] opacity-100 shadow-[0_0_10px_rgba(166,20,20,0.4)]">नज़रिया &nbsp;·&nbsp; Perspective</span>
-      <div class="div-line w-[50px] h-px bg-crimson opacity-35"></div>
+    <div class="divider">
+      <div class="div-line"></div>
+      <span class="div-text">नज़रिया &nbsp;·&nbsp; Perspective</span>
+      <div class="div-line"></div>
     </div>
 
     <!-- Tagline -->
-    <div class="tagline text-center max-w-[680px] mb-5 animate-up">
-      <h1 class="font-cormorant text-[clamp(28px,4.2vw,54px)] font-[300] leading-[1.2] tracking-[.025em]">
-        Not just clothing.<br>
-        <em class="italic text-bone-2 block mt-1">
-          A <span class="accent relative inline-block after:content-[''] after:absolute after:bottom-[2px] after:left-0 after:right-0 after:h-px after:bg-crimson after:opacity-50 after:scale-x-0 after:origin-left after:animate-stroke-reveal">perspective</span> you wear.
-        </em>
-      </h1>
+    <div class="tagline">
+      <h1>Not just clothing.<br><em>A <span class="accent">perspective</span> you wear.</em></h1>
     </div>
 
     <!-- Philosophy -->
-    <p class="philosophy text-[9.5px] tracking-[.14em] leading-[2.3] text-muted text-center max-w-[480px] mb-[48px] animate-up">
-      Every line in our design carries <span class="text-[rgba(140,16,16,0.7)] font-[500]">intention</span>.<br>
-      Every thread is a stroke of <span class="text-[rgba(140,16,16,0.7)] font-[500]">art</span>.<br>
+    <p class="philosophy">
+      Every line in our design carries <span>intention</span>.<br>
+      Every thread is a stroke of <span>art</span>.<br>
       We show our perspective — you see yours.
     </p>
 
     <!-- Manifesto Strip -->
-    <div class="manifesto-strip w-screen overflow-hidden mb-[52px] border-t border-b border-faint p-[16px_0] animate-up">
-      <div class="manifesto-track flex gap-[60px] whitespace-nowrap animate-marquee" id="manifesto-track">
-        <span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Art</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Perspective</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Design</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-devanagari font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">नज़रिया</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Intention</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Streetwear</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Culture</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Luxury</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Wearable Art</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Identity</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span>
+    <div class="manifesto-strip">
+      <div class="manifesto-track" id="manifesto-track">
+        <span class="manifesto-word">Art</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Perspective</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Design</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">नज़रिया</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Intention</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Streetwear</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Culture</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Luxury</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Wearable Art</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Identity</span><span class="manifesto-dot">◆</span>
         <!-- Duplicate for seamless loop -->
-        <span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Art</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Perspective</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Design</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-devanagari font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">नज़रिया</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Intention</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Streetwear</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Culture</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Luxury</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(232,224,213,0.22)]">Wearable Art</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span><span class="manifesto-word red font-cormorant text-[clamp(14px,2vw,22px)] font-[300] tracking-[.15em] uppercase text-[rgba(140,16,16,0.45)]">Identity</span><span class="manifesto-dot text-[rgba(140,16,16,0.3)] text-[10px] self-center">◆</span>
+        <span class="manifesto-word">Art</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Perspective</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Design</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">नज़रिया</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Intention</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Streetwear</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Culture</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Luxury</span><span class="manifesto-dot">◆</span><span class="manifesto-word">Wearable Art</span><span class="manifesto-dot">◆</span><span class="manifesto-word red">Identity</span><span class="manifesto-dot">◆</span>
       </div>
     </div>
 
     <!-- Coming Soon -->
-    <p class="coming-soon-label font-cormorant text-[clamp(18px,2.5vw,26px)] tracking-[.4em] uppercase text-crimson mb-8 animate-up relative">Coming Soon</p>
+    <p class="coming-soon-label">Coming Soon</p>
 
     <!-- Countdown Timer -->
-    <div class="countdown flex gap-[clamp(14px,3.5vw,36px)] mb-[52px] animate-up" id="countdown">
-      <div class="countdown-item flex flex-col items-center gap-2.5 p-[16px_8px] border border-transparent rounded transition-colors duration-400 hover:!border-crim-lo">
-        <span class="countdown-number font-cormorant text-[clamp(38px,6.5vw,68px)] font-[300] leading-none text-bone min-w-[60px] text-center transition-colors duration-300" id="cd-days">00</span>
-        <span class="countdown-label text-[7px] tracking-[.4em] uppercase text-muted">Days</span>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item ht">
+        <span class="countdown-number" id="cd-days">00</span>
+        <span class="countdown-label">Days</span>
       </div>
-      <span class="countdown-sep font-cormorant text-[clamp(28px,5vw,52px)] text-[rgba(140,16,16,0.25)] self-start pt-4 animate-sep-pulse">:</span>
-      <div class="countdown-item flex flex-col items-center gap-2.5 p-[16px_8px] border border-transparent rounded transition-colors duration-400 hover:!border-crim-lo">
-        <span class="countdown-number font-cormorant text-[clamp(38px,6.5vw,68px)] font-[300] leading-none text-bone min-w-[60px] text-center transition-colors duration-300" id="cd-hours">00</span>
-        <span class="countdown-label text-[7px] tracking-[.4em] uppercase text-muted">Hours</span>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item ht">
+        <span class="countdown-number" id="cd-hours">00</span>
+        <span class="countdown-label">Hours</span>
       </div>
-      <span class="countdown-sep font-cormorant text-[clamp(28px,5vw,52px)] text-[rgba(140,16,16,0.25)] self-start pt-4 animate-sep-pulse">:</span>
-      <div class="countdown-item flex flex-col items-center gap-2.5 p-[16px_8px] border border-transparent rounded transition-colors duration-400 hover:!border-crim-lo">
-        <span class="countdown-number font-cormorant text-[clamp(38px,6.5vw,68px)] font-[300] leading-none text-bone min-w-[60px] text-center transition-colors duration-300" id="cd-mins">00</span>
-        <span class="countdown-label text-[7px] tracking-[.4em] uppercase text-muted">Minutes</span>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item ht">
+        <span class="countdown-number" id="cd-mins">00</span>
+        <span class="countdown-label">Minutes</span>
       </div>
-      <span class="countdown-sep font-cormorant text-[clamp(28px,5vw,52px)] text-[rgba(140,16,16,0.25)] self-start pt-4 animate-sep-pulse">:</span>
-      <div class="countdown-item flex flex-col items-center gap-2.5 p-[16px_8px] border border-transparent rounded transition-colors duration-400 hover:!border-crim-lo">
-        <span class="countdown-number font-cormorant text-[clamp(38px,6.5vw,68px)] font-[300] leading-none text-bone min-w-[60px] text-center transition-colors duration-300" id="cd-secs">00</span>
-        <span class="countdown-label text-[7px] tracking-[.4em] uppercase text-muted">Seconds</span>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-item ht">
+        <span class="countdown-number" id="cd-secs">00</span>
+        <span class="countdown-label">Seconds</span>
       </div>
     </div>
 
     <!-- Our Story Button -->
-    <button class="story-btn appearance-none bg-transparent border border-crimson text-crimson font-dm-mono text-[8px] tracking-[.3em] uppercase p-[12px_24px] cursor-none mb-8 transition-all duration-300 hover:bg-crimson hover:text-bone animate-up hover:-translate-y-[2px] shadow-[0_0_20px_rgba(140,16,16,0.3)] hover:shadow-[0_0_30px_rgba(140,16,16,0.5)]" onclick="openStoryModal()">Read Our Story</button>
+    <button class="story-btn ht" onclick="openStoryModal()">Read Our Story</button>
 
     <!-- Divider Line -->
-    <div class="line-accent w-[80px] h-px bg-gradient-to-r from-transparent via-crimson to-transparent mb-[48px] opacity-50 animate-up"></div>
+    <div class="line-accent"></div>
 
     <!-- Google Form Registration -->
-    <div class="google-form-section text-center mb-[52px] animate-up p-[36px_32px] border border-faint rounded-[8px] bg-glass backdrop-blur-md max-w-[480px] w-full relative overflow-hidden animate-up">
-      <div class="before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-crimson before:to-transparent before:opacity-40"></div>
-      <p class="subscribe-title font-cormorant text-[clamp(18px,2.6vw,26px)] font-[300] text-bone tracking-[.04em] mb-1.5">Be the first to experience it.</p>
-      <p class="subscribe-sub text-[8px] tracking-[.2em] uppercase text-muted mb-[28px]">Join our inner circle — before the world sees us</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScHIOATdO0mzRGqgXwHUHaR8z1E2AJFcgh-RT-54NwgLnCfnA/viewform" target="_blank" rel="noopener noreferrer" class="google-form-btn inline-block px-[30px] py-[15px] bg-crimson text-bone font-dm-mono text-[10px] tracking-[.3em] uppercase font-[500] no-underline rounded-[2px] transition-all duration-300 relative overflow-hidden cursor-none hover:tracking-[.36em] hover:bg-[#A02020] hover:-translate-y-[2px] shadow-[0_10px_30px_rgba(140,16,16,0.4)] after:content-[''] after:absolute after:inset-0 after:bg-[linear-gradient(135deg,transparent_40%,rgba(255,255,255,0.06)_50%,transparent_60%)] after:-translate-x-full after:transition-transform after:duration-[600ms] hover:after:translate-x-full">
+    <div class="google-form-section">
+      <p class="subscribe-title">Be the first to experience it.</p>
+      <p class="subscribe-sub">Join our inner circle — before the world sees us</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScHIOATdO0mzRGqgXwHUHaR8z1E2AJFcgh-RT-54NwgLnCfnA/viewform" target="_blank" rel="noopener noreferrer" class="google-form-btn ht">
         Join Registration
       </a>
     </div>
 
     <!-- Social -->
-    <div class="social-links flex gap-[24px] items-center mb-5 animate-up">
-      <a href="https://www.instagram.com/nazariyaa.in/" target="_blank" rel="noopener" class="social-link inline-flex items-center gap-[10px] text-[8px] tracking-[.24em] uppercase text-muted no-underline cursor-none transition-all duration-300 p-[10px_16px] border border-transparent rounded-[2px] hover:text-crimson hover:border-crim-lo hover:shadow-[0_0_20px_rgba(140,16,16,0.3)]">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-[16px] h-[16px] stroke-current fill-none stroke-[1.5]">
+    <div class="social-links">
+      <a href="https://www.instagram.com/nazariyaa.in/" target="_blank" rel="noopener" class="social-link ht">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="5"/>
           <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
@@ -255,18 +662,18 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer relative z-[1] text-center p-[28px] animate-fade-in border-t border-faint">
-    <p class="copy text-[7.5px] tracking-[.14em] text-[rgba(232,224,213,0.12)]">© 2025 NAZARIYAA — Wearable Perspective. All rights reserved.</p>
+  <footer class="footer">
+    <p class="copy">© 2025 NAZARIYAA — Wearable Perspective. All rights reserved.</p>
   </footer>
 
   <!-- Story Modal -->
-  <div class="modal-overlay fixed inset-0 bg-[rgba(3,2,1,0.85)] backdrop-blur-sm z-[1000] flex items-center justify-center opacity-0 invisible transition-all duration-400" id="story-modal">
-    <div class="modal-content bg-ink border border-crim-mid p-[40px] w-[90%] max-w-[600px] translate-y-5 transition-all duration-400 ease-[cubic-bezier(.16,1,.3,1)] max-h-[90vh] overflow-y-auto relative rounded-lg">
-      <button class="modal-close absolute top-[16px] right-[20px] bg-transparent border-none text-muted text-[20px] cursor-none transition-colors duration-300 hover:text-crimson" onclick="closeStoryModal()">×</button>
-      <h2 class="modal-title font-cormorant text-[24px] font-[300] text-bone mb-[24px] text-center">The Nazariyaa Story</h2>
-      <div class="text-[11px] leading-[2] text-bone-2 tracking-[.05em] mb-5 [&>p]:mb-[16px]">
-        <p>Nazariyaa was born in Bhilai, Chhattisgarh from a simple realization: streetwear had lost its meaning. It had become about logos rather than art.</p>
-        <p>The word <em>Nazariyaa</em> translates to "Perspective". We believe that clothing is a canvas, and true design requires intention. Every single line we draw, every texture we choose, and every silhouette we craft is deliberately placed for the sake of art.</p>
+  <div class="modal-overlay" id="story-modal">
+    <div class="modal-content">
+      <button class="modal-close ht" onclick="closeStoryModal()">×</button>
+      <h2 class="modal-title">The Nazariyaa Story</h2>
+      <div style="font-size: 11px; line-height: 2; color: var(--bone2); letter-spacing: .05em; margin-bottom: 20px;">
+        <p style="margin-bottom: 16px;">Nazariyaa was born in Bhilai, Chhattisgarh from a simple realization: streetwear had lost its meaning. It had become about logos rather than art.</p>
+        <p style="margin-bottom: 16px;">The word <em>Nazariyaa</em> translates to "Perspective". We believe that clothing is a canvas, and true design requires intention. Every single line we draw, every texture we choose, and every silhouette we craft is deliberately placed for the sake of art.</p>
         <p>When you wear Nazariyaa, you aren't just wearing clothes. You are presenting our artistic perspective to the world, while simultaneously inviting the observer to view it through their own unique perspective. It is an ongoing dialogue written in fabric.</p>
       </div>
     </div>
@@ -276,7 +683,7 @@
     /* PRELOADER */
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('preloader').classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        document.getElementById('preloader').classList.add('done');
       }, 1800);
     });
 
@@ -285,10 +692,7 @@
     const cring = document.getElementById('cring');
     let mx = -100, my = -100, rx = -100, ry = -100;
 
-    document.addEventListener('mousemove', e => { 
-      mx = e.clientX; 
-      my = e.clientY; 
-    });
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
     (function cursorLoop() {
       rx += (mx - rx) * 0.12;
@@ -343,11 +747,11 @@
     const storyModal = document.getElementById('story-modal');
 
     function openStoryModal() { 
-      storyModal.classList.add('opacity-100', 'visible', 'active'); 
+      storyModal.classList.add('active'); 
     }
     
     function closeStoryModal() {
-      storyModal.classList.remove('opacity-100', 'visible', 'active');
+      storyModal.classList.remove('active');
     }
 
     // Close when clicking outside content
@@ -355,27 +759,25 @@
       if (e.target === storyModal) closeStoryModal();
     });
 
-    /* ENHANCED FLOATING DEVANAGARI GLYPHS - MUCH MORE VISIBLE & STYLISH */
-    const glyphs = ['न', 'ज़', 'रि', 'या', 'क', 'ल', 'अ', 'द', 'प', 'श', 'म', 'त', 'व', 'ग', 'र', 'ि', 'य', 'ा'];
+    /* FLOATING DEVANAGARI GLYPHS */
+    const glyphs = ['न', 'ज़', 'रि', 'या', 'क', 'ल', 'अ', 'द', 'प', 'श', 'म', 'त', 'व', 'ग'];
     const glyphContainer = document.getElementById('bg-glyphs');
 
     function spawnGlyph() {
       const el = document.createElement('span');
-      el.className = 'bg-glyph absolute font-devanagari font-[300] text-[rgba(140,16,16,0.15)] select-none animate-glyph-float pointer-events-none drop-shadow-[0_0_20px_rgba(140,16,16,0.4)] hover:scale-125 transition-transform duration-300 z-0';
+      el.classList.add('bg-glyph');
       el.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
       el.style.left = Math.random() * 100 + 'vw';
       el.style.top = (100 + Math.random() * 20) + 'vh';
-      el.style.fontSize = (60 + Math.random() * 120) + 'px'; // Larger & more visible
-      el.style.animationDuration = (20 + Math.random() * 25) + 's'; // Slower for elegance
-      el.style.textShadow = '0 0 30px rgba(140,16,16,0.6), 0 0 60px rgba(140,16,16,0.3)'; // Strong glow
+      el.style.fontSize = (40 + Math.random() * 80) + 'px';
+      el.style.animationDuration = (18 + Math.random() * 20) + 's';
       glyphContainer.appendChild(el);
 
       el.addEventListener('animationend', () => el.remove());
     }
 
-    // Spawn more frequently for better coverage
-    setInterval(spawnGlyph, 1200); 
-    for (let i = 0; i < 6; i++) setTimeout(() => spawnGlyph(), i * 400);
+    setInterval(spawnGlyph, 3500);
+    for (let i = 0; i < 4; i++) setTimeout(() => spawnGlyph(), i * 800);
 
     /* PARALLAX GLOW on mouse */
     const centerOrb = document.querySelector('.glow-orb--center');
